@@ -117,8 +117,16 @@ def _frame_alignment_base(
     lock = multiprocessing.Lock()
     if n_processes > 1:
         pool = multiprocessing.Pool(processes=n_processes, maxtasksperchild=1)
-
-    for cycle_idx, cycle in zip(it.count(), dataset):
+    
+    # Turn the dataset's sequence generator into a tuple
+    cycles = tuple(dataset)
+    
+    for i in range(len(cycles)):
+        # We loop over all the cycles starting with the middle one and
+        # working our way outwards
+        cycle_idx = np.floor(len(cycles)/2) + -1**mod(i,2) * np.ceil(i/2)
+        cycle = cycles[cycle_idx]
+        
         chunksize = min(1 + old_div(len(cycle), n_processes), 200)
         if n_processes > 1:
             map_generator = pool.imap_unordered(
