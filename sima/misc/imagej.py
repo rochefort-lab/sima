@@ -8,6 +8,7 @@ from builtins import range
 # https://gist.github.com/luispedro/3437255
 #
 # Modified 2014 by Jeffrey Zaremba.
+# Modified 2015 by Scott Lowe (@scottclowe) and Sander Keemink (@swkeemink).
 
 import numpy as np
 from itertools import product
@@ -97,6 +98,17 @@ def read_roi(roi_obj):
         b1 = _get8()
         return (b0 << 8) | b1
 
+    def _get16signed():
+        """Read a signed 16 bit integer from 2 bytes of the roi file object"""
+        b0 = _get8()
+        b1 = _get8()
+        out = (b0 << 8) | b1
+        # This is a signed integer, so need to check if the value is
+        # positive or negative.
+        if b0 > 127:
+            out = out - 65536
+        return out
+
     def _get32():
         """Read 4 bytes from the roi file object"""
         s0 = _get16()
@@ -137,10 +149,10 @@ def read_roi(roi_obj):
         raise ValueError('read_imagej_roi: \
                           ROI type {} not supported'.format(roi_type))
 
-    top = _get16()
-    left = _get16()
-    bottom = _get16()
-    right = _get16()
+    top = _get16signed()
+    left = _get16signed()
+    bottom = _get16signed()
+    right = _get16signed()
     n_coordinates = _get16()
 
     _getfloat()  # x1
