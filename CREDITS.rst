@@ -28,6 +28,8 @@ Testing / Bug Fixes
 * Yoshiyuki Yamada
 * Maximilian Hoffmann
 * Erik Flister
+* Scott Lowe
+* Sander Keemink
 
 
 External code
