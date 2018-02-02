@@ -359,9 +359,11 @@ def gcov_reset_counters():
                 pth = os.path.join(dirpath, fn)
                 os.unlink(pth)
 
+
 #
 # LCOV support
 #
+
 
 LCOV_OUTPUT_FILE = os.path.join(ROOT_DIR, 'build', 'lcov.out')
 LCOV_HTML_DIR = os.path.join(ROOT_DIR, 'build', 'lcov')

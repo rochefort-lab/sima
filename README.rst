@@ -45,7 +45,7 @@ Dependencies
 * `Python <http://python.org>`_ 2.7 
 * `numpy <http://www.scipy.org>`_ >= 1.6.2
 * `scipy <http://www.scipy.org>`_ >= 0.13.0
-* `scikit-image <http://scikit-image.org>`_ >= 0.9.3
+* `scikit-image <http://scikit-image.org>`_ >= 0.9.3 (0.11.0 recommended)
 * `scikit-learn <http://scikit-learn.org>`_ >= 0.11
 * `shapely <https://pypi.python.org/pypi/Shapely>`_ >= 1.2.14 (**Windows users**: be sure to install from `Christophe Gohlke's built wheels <http://www.lfd.uci.edu/~gohlke/pythonlibs/#shapely>`_)
 * `pillow <https://pypi.python.org/pypi/Pillow>`_ >= 2.6.1
@@ -80,7 +80,7 @@ resulting publications:
   `Kaifosh P, Zaremba J, Danielson N, and Losonczy A. SIMA: Python software for
   analysis of dynamic fluorescence imaging data. Frontiers in Neuroinformatics.
   2014 Aug 27; 8:77. doi: 10.3389/fninf.2014.00077.
-  <http://journal.frontiersin.org/Journal/101928>`_
+  <http://dx.doi.org/10.3389/fninf.2014.00080>`_
 
 License
 -------

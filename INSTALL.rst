@@ -20,6 +20,9 @@ the various prerequisites. Recommended distributions are:
 For Mac OS X, we recommend installing the prerequisites, especially OpenCV,
 using a package manager, such as `MacPorts <http://www.macports.org>`_.
 
+As an alternative, you can also run SIMA within a
+`Docker <https://www.docker.com/>`_ container, see :ref:`docker setup<docker-setup-sima>`.
+
 Prerequisites
 =============
 
@@ -30,7 +33,7 @@ system's or Python distribution's package manager prior to installing SIMA.
 * `Python <http://python.org>`_ 2.7 
 * `numpy <http://www.scipy.org>`_ >= 1.8
 * `scipy <http://www.scipy.org>`_ >= 0.13.0
-* `scikit-image <http://scikit-image.org>`_ >= 0.9.3
+* `scikit-image <http://scikit-image.org>`_ >= 0.9.3 (0.11.0 recommended)
 * `scikit-learn <http://scikit-learn.org>`_ >= 0.11
 * `shapely <https://pypi.python.org/pypi/Shapely>`_ >= 1.2.14 (**Windows users**: be sure to install from `Christophe Gohlke's built wheels <http://www.lfd.uci.edu/~gohlke/pythonlibs/#shapely>`_)
 * `pillow <https://pypi.python.org/pypi/Pillow>`_ >= 2.6.1
@@ -110,3 +113,26 @@ install SIMA and its dependencies::
     $ sudo port select --set python python27
     $ sudo port select --set pip pip27
     $ pip install sima --user
+
+.. _docker-setup-sima:
+
+Docker
+------
+`Docker <https://www.docker.com/>`_ images are pre-built installations
+that you can run immediately on your local machine. To run SIMA inside a
+Docker container, first follow the Docker Engine
+`installation <https://docs.docker.com/engine/installation/>`_ instructions
+for your operating system.  
+
+From a docker terminal run the latest SIMA image (it will automatically be downloaded), with::
+
+    $ docker run -it --rm --net=host --env="DISPLAY" -v $HOME/.Xauthority:/root/.Xauthority:rw
+        -v /PATH/TO/DATA:/data --name sima losonczylab/sima bash
+
+This will give you a shell within the container from which you can run the example
+workflow script::
+
+    $ python /sima/examples/workflow.py
+
+or your own custom scripts on any data you've mapped into the container from
+/PATH/TO/DATA
