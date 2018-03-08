@@ -173,7 +173,8 @@ class DiscreteFourier2D(motion.MotionEstimationStrategy):
                     dy, dx = output
 
                 # get results into a shape sima likes
-                frame_shifts = np.zeros([len(frames), num_planes, 2])
+                frame_shifts = np.zeros([len(frames), num_planes, 2],
+                                        dtype=int)
                 for idx, frame in enumerate(sequence):
                     frame_shifts[idx, plane_idx] = [dy[idx], dx[idx]]
             displacements.append(frame_shifts)
